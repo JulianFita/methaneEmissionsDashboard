@@ -37,3 +37,16 @@ anyDuplicated(methaneEmissions.longer)
 # Save 'Na' values in a new variable
 methaneEmissions.NA <- methaneEmissions.longer %>%
   filter(!complete.cases(.))
+
+country <- methaneEmissions.longer %>%
+  sample_frac(1) %>%
+  select(country) %>%
+  arrange(country)
+
+sector <- methaneEmissions.longer %>%
+  sample_frac(1) %>%
+  select(sector) %>%
+  arrange(sector)
+
+hc_my_theme <- hc_theme_merge(hc_theme_google(),
+                              hc_theme(chart = list(backgroundColor = NULL)))
